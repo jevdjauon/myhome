@@ -1,6 +1,10 @@
+import "./styles/app.scss";
+import BackgroundImage from "./components/BackgroundImage";
+
 const App = () => {
   return (
-    <div>
+    <div className="app-container">
+      <BackgroundImage />
       <h1>MyHome</h1>
       <div>
         <h1>navbar</h1>
