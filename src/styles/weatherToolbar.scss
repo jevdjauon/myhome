@@ -1,0 +1,21 @@
+.weather-container {
+  all: unset;
+  background-color: #95a7a7cc;
+  position: relative;
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.weather-dropdown {
+  position: absolute;
+  top: 100px;
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  background-color: coral;
+}

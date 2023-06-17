@@ -1,17 +1,16 @@
 import "./styles/app.scss";
 import BackgroundImage from "./components/BackgroundImage";
+import WeatherToolbar from "./components/WeatherToolbar";
 
 const App = () => {
   return (
     <div className="app-container">
       <BackgroundImage />
-      <h1>MyHome</h1>
-      <div>
-        <h1>navbar</h1>
-        <p>weather</p>
+      <header>
+        <WeatherToolbar />
         <p>user bar</p>
         <p>setting</p>
-      </div>
+      </header>
       <div>searhbar?</div>
       <div>favorite sites</div>
       <div>

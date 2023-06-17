@@ -1,0 +1,46 @@
+{
+  "coord": {
+    "lon": 20.4651,
+    "lat": 44.804
+  },
+  "weather": [
+    {
+      "id": 500,
+      "main": "Rain",
+      "description": "light rain",
+      "icon": "10d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 68.7,
+    "feels_like": 68.85,
+    "temp_min": 67.42,
+    "temp_max": 73.69,
+    "pressure": 1010,
+    "humidity": 76
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 10.36,
+    "deg": 250
+  },
+  "rain": {
+    "1h": 0.6
+  },
+  "clouds": {
+    "all": 20
+  },
+  "dt": 1687005688,
+  "sys": {
+    "type": 2,
+    "id": 2037836,
+    "country": "RS",
+    "sunrise": 1686970299,
+    "sunset": 1687026379
+  },
+  "timezone": 7200,
+  "id": 792680,
+  "name": "Belgrade",
+  "cod": 200
+}

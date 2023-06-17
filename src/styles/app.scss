@@ -7,4 +7,13 @@
 .app-container {
   min-width: 100vw;
   min-height: 100vh;
+
+  header {
+    height: 120px;
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
 }
