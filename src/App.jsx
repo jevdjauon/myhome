@@ -1,12 +1,14 @@
 import "./styles/app.scss";
 import BackgroundImage from "./components/BackgroundImage";
-import WeatherToolbar from "./components/WeatherToolbar";
+import WeatherToolbar from "./components/WeatherWidget";
+import TimeWidget from "./components/TimeWidget";
 
 const App = () => {
   return (
     <div className="app-container">
       <BackgroundImage />
       <header>
+        <TimeWidget />
         <WeatherToolbar />
         <p>user bar</p>
         <p>setting</p>
