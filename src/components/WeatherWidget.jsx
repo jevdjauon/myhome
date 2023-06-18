@@ -14,7 +14,7 @@ const WeatherToolbar = () => {
   const dataTemp = data.main.temp;
   const temp = parseInt((dataTemp - 32) * (5 / 9));
   const humidity = data.main.humidity;
-  const pressure = data.main.pressure;
+  const pressure = data.main.pressure / 1000;
   const windSpeed = data.wind.speed;
 
   // weatherToolbar dropdown
@@ -49,13 +49,16 @@ const WeatherToolbar = () => {
         <div className="weather-dropdown">
           <div>
             <p>{city}</p>
-            <img src={weatherLogoUrl} alt="" />
             <p>{temp}&#x2103;</p>
           </div>
-
-          <p>{humidity}%</p>
-          <p>{pressure}BAR</p>
-          <p>{windSpeed}km/h</p>
+          <div>
+            <img src={weatherLogoUrl} alt="" />
+          </div>
+          <div>
+            <p>{humidity} %</p>
+            <p>{pressure} BAR</p>
+            <p>{windSpeed} km/h</p>
+          </div>
         </div>
       ) : null}
     </div>
