@@ -3,7 +3,7 @@ import CryptoArticle from "../components/CryptoArticle.jsx";
 
 // Others
 import testData from "../data/interestsTestData.json";
-// import { interestsFetchData } from "../helpers/interestsFetchData.js";
+// import { cryptoFetchData } from "../helpers/cryptoFetchData.js";
 
 const CryptoNews = () => {
   /*
@@ -11,7 +11,7 @@ const CryptoNews = () => {
 
     const { isLoading, error, data } = useQuery({
     queryKey: ["interests-data"],
-    queryFn: interestsFetchData,
+    queryFn: cryptoFetchData,
   });
   if (isLoading) return "Loading...";
   if (error) return "An error has occurred: " + error.message;

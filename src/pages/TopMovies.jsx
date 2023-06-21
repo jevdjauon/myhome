@@ -4,7 +4,6 @@ import moviesData from "../data/imdbTestData.json";
 
 const TopMovies = () => {
   const movies = moviesData.results;
-  console.log(movies);
 
   return (
     <div>

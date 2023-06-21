@@ -1,4 +1,4 @@
-export const interestsFetchData = async () => {
+export const cryptoFetchData = async () => {
   const apiOptions = {
     method: "GET",
     //   url: "https://crypto-news16.p.rapidapi.com/news/top/5",
