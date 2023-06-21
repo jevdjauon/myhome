@@ -1,0 +1,15 @@
+.interests-container {
+  background-color: white;
+  margin-top: 60%;
+
+  .interests-navbar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    height: 50px;
+    background-color: aqua;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
