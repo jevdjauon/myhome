@@ -1,15 +1,76 @@
 .interests-container {
   background-color: white;
-  margin-top: 60vh;
+  position: relative;
+  // margin-top: 60vh;
+  top: 60vh;
 
   .interests-navbar {
-    position: -webkit-sticky;
-    position: sticky;
     top: 0;
     height: 50px;
+    padding: 0 20px;
     background-color: aqua;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+
+    .customize {
+      background-color: #49aaee;
+      position: absolute;
+      top: -200px;
+      right: 0;
+      height: 200px;
+      width: 400px;
+
+      .customize-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        align-items: center;
+        height: 100%;
+        text-align: center;
+
+        button {
+          all: unset;
+          cursor: pointer;
+          width: 80px;
+          height: 80px;
+          background-color: chocolate;
+        }
+      }
+    }
+
+    .interestsMenu {
+      all: unset;
+      width: 50px;
+      height: 30px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      scale: 0.7;
+      span {
+        background-color: black;
+        width: 40px;
+        height: 4px;
+        transition: all ease 0.3s;
+      }
+    }
+    .opened {
+      :nth-child(1) {
+        translate: 0 13px;
+        transform: rotate(45deg);
+      }
+      :nth-child(2) {
+        opacity: 0;
+        transform: translate(0 30px);
+      }
+      :nth-child(3) {
+        translate: 0 -13px;
+        transform: rotate(315deg);
+      }
+    }
   }
 }
