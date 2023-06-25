@@ -1,0 +1,27 @@
+.news {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem;
+  gap: 3rem;
+  .news-article {
+    // padding: 20px;
+    width: 45%;
+    button {
+      all: unset;
+      color: #49aaee;
+      &:hover {
+        cursor: pointer;
+        color: #3398d6;
+      }
+    }
+    .article-content {
+    }
+    p {
+      padding: 10px 0;
+    }
+    img {
+      width: 100%;
+    }
+  }
+}
