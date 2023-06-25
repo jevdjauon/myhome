@@ -6,6 +6,7 @@ import { Link, Routes, Route } from "react-router-dom";
 import CryptoNews from "../pages/CryptoNews";
 import TopMovies from "../pages/TopMovies";
 import FormulaSeason from "../pages/FormulaSeason";
+import News from "../pages/News";
 
 // Others
 import Hamburger from "./Hamburger";
@@ -36,7 +37,7 @@ const Interests = () => {
   return (
     <div className="interests-container">
       <div className="interests-navbar" style={{ position: "sticky" }}>
-        <Link to="/">Home</Link>
+        <Link to="/">News</Link>
         {cryptoShown ? <Link to="crypto-news">Crypto News</Link> : null}
         {moviesShown ? <Link to="top-movies">Top Movies</Link> : null}
         {f1Shown ? <Link to="formula-season">Formula 1</Link> : null}
@@ -57,7 +58,7 @@ const Interests = () => {
         />
       </div>
       <Routes>
-        <Route path="/" default element={<p>"Home"</p>} />
+        <Route path="/" default element={<News />} />
         <Route path="crypto-news" default element={<CryptoNews />} />
         <Route path="top-movies" element={<TopMovies />} />
         <Route path="formula-season" element={<FormulaSeason />} />
