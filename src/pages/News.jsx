@@ -31,7 +31,7 @@ import "../styles/news.scss";
 // }
 
 const News = () => {
-  console.log(data.results);
+  // console.log(data.results);
   let newsData = data.results;
 
   return (
@@ -40,7 +40,7 @@ const News = () => {
       {newsData &&
         newsData.map(
           ({ title, description, image_url, creator, content, link }) => {
-            console.log(content.length);
+            // console.log(content.length);
             let smallContent = content.slice(0, 500);
             return (
               <div className="news-article" key={link}>
