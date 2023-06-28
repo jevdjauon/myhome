@@ -1,12 +1,12 @@
 .news {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 2rem;
   gap: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  place-items: center;
   .news-article {
-    // padding: 20px;
-    width: 45%;
+    padding: 2rem;
+
     button {
       all: unset;
       color: #49aaee;
