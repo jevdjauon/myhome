@@ -16,7 +16,7 @@ const CryptoNews = () => {
   });
   if (isLoading) return "Loading...";
   if (error) return "An error has occurred: " + error.message;
-  console.log(data);
+  // console.log(data);
   // */
 
   return (

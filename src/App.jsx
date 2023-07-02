@@ -9,6 +9,7 @@ import Interests from "./components/Interests";
 
 // Other
 import "./styles/app.scss";
+import FavoriteLinks from "./components/FavoriteLinks";
 
 const queryClient = new QueryClient();
 
@@ -24,7 +25,7 @@ const App = () => {
           <p>setting</p>
         </header>
         <div>searhbar?</div>
-        <div>favorite sites</div>
+        <FavoriteLinks />
         <Interests />
       </div>
     </QueryClientProvider>
