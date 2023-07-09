@@ -7,6 +7,8 @@ export const cryptoFetchData = async () => {
     headers: {
       "X-RapidAPI-Key": "a3dd6d81e5msh9406048f565d5b3p1cbc96jsn35ac2878db39",
       "X-RapidAPI-Host": "crypto-news16.p.rapidapi.com",
+      staleTime: 60 * (60 * 1000),
+      cacheTime: 120 * (60 * 1000),
     },
   };
 
