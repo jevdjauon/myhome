@@ -20,17 +20,17 @@
       top: -200px;
       right: 0;
       height: 200px;
-      width: 400px;
+      width: 500px;
 
       .customize-buttons {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         align-items: center;
         height: 100%;
         text-align: center;
-
+        padding: 1rem;
         button {
           all: unset;
           cursor: pointer;
