@@ -1,0 +1,16 @@
+.memes-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  gap: 4rem;
+  background-color: #49aaee;
+  img {
+    // border: 1px solid blue;
+    // border-radius: 15px;
+    padding: 1rem;
+    // width: 30%;
+    max-height: 400px;
+  }
+}
