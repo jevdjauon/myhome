@@ -15,8 +15,8 @@ const BackgroundImage = () => {
 
   if (isLoading) return "Loading...";
   if (error) return error.message;
-
-  let bgImageUrl = data.photos[0].src.landscape;
+  let imgNmb = parseInt(Math.random() * 10);
+  let bgImageUrl = data.photos[imgNmb].src.landscape;
 
   return (
     <div className="bg-container">
