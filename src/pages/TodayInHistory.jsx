@@ -11,19 +11,20 @@ const TodayInHistory = () => {
   if (isLoading) return "Loading...";
   if (error) return "An error has occurred: " + error.message;
 
-  console.log(data.article);
-
   return (
     <div>
       <h3>Today In History</h3>
-
-      {/* {data.article.map((item) => console.log(item))} */}
-      {/* {data.article.map((item) => (
-        <div>
-          <h5>{item.title}</h5>
-          <Link to={item.url}>Reed Article</Link>
-        </div>
-      ))} */}
+      <div>
+        <h5>{data.article.title}</h5>
+        <Link to={data.article.url}>Reed Article</Link>
+      </div>
+      {/* {data &&
+        data.article.map((item) => (
+          <div>
+            <h5>{item.title}</h5>
+            <Link to={item.url}>Reed Article</Link>
+          </div>
+        ))} */}
     </div>
   );
 };
