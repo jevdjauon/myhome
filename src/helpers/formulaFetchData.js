@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const formulaFetchData = async () => {
   const options = {
     method: "GET",
@@ -10,7 +12,7 @@ export const formulaFetchData = async () => {
 
   try {
     const response = await axios.request(options);
-    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.error(error);
   }
