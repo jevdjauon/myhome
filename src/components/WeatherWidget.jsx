@@ -1,63 +1,97 @@
 import axios from "axios";
-import { useState } from "react";
-import data from "../data/weatherTestData.json";
+import { useEffect, useState } from "react";
+import dataTest from "../data/weatherTestData.json";
 import "../styles/weatherToolbar.scss";
+import { useQuery } from "@tanstack/react-query";
+import {
+  locationFetchData,
+  weatherFetchData,
+} from "../helpers/weatherFetchData";
 
 const WeatherToolbar = () => {
-  const [weatherData, setWeatherData] = useState(null);
   const [dropdown, setDropdown] = useState(false);
+  const [weatherIcon, setWeatherIcon] = useState(null);
+  const [temperature, setTemperature] = useState(null);
 
-  // not dynamic data from JSON for developing
-  const city = data.name;
-  const dataIcon = data.weather[0].icon;
-  const weatherLogoUrl = `https://openweathermap.org/img/w/${dataIcon}.png`;
-  const dataTemp = data.main.temp;
-  const temp = parseInt((dataTemp - 32) * (5 / 9));
-  const humidity = data.main.humidity;
-  const pressure = data.main.pressure / 1000;
-  const windSpeed = data.wind.speed;
+  const locData = useQuery({
+    queryKey: ["location"],
+    queryFn: () => locationFetchData(),
+  });
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["weatherData"],
+    queryFn: () => weatherFetchData(locData.data.countryCapital),
+  });
+
+  const getWeatherIcon = async () => {
+    setWeatherIcon(
+      `https://openweathermap.org/img/w/${data.weather[0].icon}.png`
+    );
+  };
+
+  const getTemperature = async () => {
+    setTemperature(parseInt((data.main.temp - 32) * (5 / 9)));
+  };
+
+  useEffect(() => {
+    getWeatherIcon();
+    getTemperature();
+  }, []);
 
   // weatherToolbar dropdown
   const dropdownOpen = () => {
     dropdown ? setDropdown(false) : setDropdown(true);
   };
 
-  //   const options = {
-  //     method: 'GET',
-  //     url: 'https://open-weather13.p.rapidapi.com/city/landon',
-  //     headers: {
-  //       'X-RapidAPI-Key': 'a3dd6d81e5msh9406048f565d5b3p1cbc96jsn35ac2878db39',
-  //       'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
-  //     }
-  //   };
-
-  //   try {
-  //       const response = await axios.request(options);
-  //       console.log(response.data);
-  //   } catch (error) {
-  //       console.error(error);
-  //   }
-
   return (
     <div>
+      {/* {data && (
+        <button onClick={() => dropdownOpen()} className="weather-container">
+          <p>{data.name}</p>
+          <img src={weatherIcon} alt="" />
+          <p>{temperature}&#x2103;</p>
+        </button>
+      )} */}
+
       <button onClick={() => dropdownOpen()} className="weather-container">
-        <p>{city}</p>
-        <img src={weatherLogoUrl} alt="" />
-        <p>{temp}&#x2103;</p>
+        <p>{dataTest.name}</p>
+        <img src={weatherIcon} alt="" />
+        <p>{temperature}&#x2103;</p>
       </button>
+
+      {/* {data && dropdown ? (
+        <div className="weather-dropdown">
+          <div>
+            <p>{data.name}</p>
+            <p>{temperature}&#x2103;</p>
+          </div>
+          <div>
+            <img src={weatherIcon} alt="" />
+          </div>
+          <div>
+            <p>{data.main.humidity} %</p>
+            <p>{dataTest.main.pressure / 1000} BAR</p>
+            <p>{data.wind.speed} km/h</p>
+          </div>
+        </div>
+      ) : null} */}
+
       {dropdown ? (
         <div className="weather-dropdown">
           <div>
-            <p>{city}</p>
-            <p>{temp}&#x2103;</p>
+            <p>{dataTest.name}</p>
+            <p>{parseInt((data.main.temp - 32) * (5 / 9))}&#x2103;</p>
           </div>
           <div>
-            <img src={weatherLogoUrl} alt="" />
+            <img
+              src={`https://openweathermap.org/img/w/${dataTest.weather[0].icon}.png`}
+              alt=""
+            />
           </div>
           <div>
-            <p>{humidity} %</p>
-            <p>{pressure} BAR</p>
-            <p>{windSpeed} km/h</p>
+            <p>{data.main.humidity} %</p>
+            <p>{data.main.pressure / 1000} BAR</p>
+            <p>{data.wind.speed} km/h</p>
           </div>
         </div>
       ) : null}
