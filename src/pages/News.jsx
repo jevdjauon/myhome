@@ -1,46 +1,23 @@
 // App
-// import axios from "axios";
 import { Link } from "react-router-dom";
-
-// Test Data
-import data from "../data/newsTestData.json";
+import { newsFetchData } from "../helpers/newsFetchData";
+import { useQuery } from "@tanstack/react-query";
 
 // Other
 import "../styles/news.scss";
 
-// const options = {
-//   method: "GET",
-//   url: "https://newsdata2.p.rapidapi.com/news",
-//   params: {
-//     country: "us, gb, fr",
-//     category: "sports, health, entertainment",
-//     language: "en",
-//     q: "title, image",
-//   },
-//   headers: {
-//     "X-RapidAPI-Key": "a3dd6d81e5msh9406048f565d5b3p1cbc96jsn35ac2878db39",
-//     "X-RapidAPI-Host": "newsdata2.p.rapidapi.com",
-//   },
-// };
-
-// try {
-//   const response = await axios.request(options);
-//   console.log(response.data);
-// } catch (error) {
-//   console.error(error);
-// }
-
 const News = () => {
-  // console.log(data.results);
-  let newsData = data.results;
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["newsData"],
+    queryFn: newsFetchData,
+    cacheTime: 60 * (60 * 1000),
+  });
 
   return (
     <div className="news">
-      {/* <h1>News</h1> */}
-      {newsData &&
-        newsData.map(
+      {data &&
+        data.results.map(
           ({ title, description, image_url, creator, content, link }) => {
-            // console.log(content.length);
             let smallContent = content.slice(0, 500);
             return (
               <div className="news-article" key={link}>
