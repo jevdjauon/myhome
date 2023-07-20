@@ -9,7 +9,7 @@ const ProgrammingMemes = () => {
   });
   if (isLoading) return "Loading...";
   if (error) return "An error has occurred: " + error.message;
-  console.log(data);
+
   return (
     <div className="memes-container">
       {data.map((item) => (
