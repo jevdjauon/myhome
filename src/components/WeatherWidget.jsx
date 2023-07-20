@@ -55,8 +55,11 @@ const WeatherToolbar = () => {
 
       <button onClick={() => dropdownOpen()} className="weather-container">
         <p>{dataTest.name}</p>
-        <img src={weatherIcon} alt="" />
-        <p>{temperature}&#x2103;</p>
+        <img
+          src={`https://openweathermap.org/img/w/${dataTest.weather[0].icon}.png`}
+          alt=""
+        />
+        <p>{parseInt((dataTest.main.temp - 32) * (5 / 9))}&#x2103;</p>
       </button>
 
       {/* {data && dropdown ? (
@@ -80,7 +83,7 @@ const WeatherToolbar = () => {
         <div className="weather-dropdown">
           <div>
             <p>{dataTest.name}</p>
-            <p>{parseInt((data.main.temp - 32) * (5 / 9))}&#x2103;</p>
+            <p>{parseInt((dataTest.main.temp - 32) * (5 / 9))}&#x2103;</p>
           </div>
           <div>
             <img
@@ -89,9 +92,9 @@ const WeatherToolbar = () => {
             />
           </div>
           <div>
-            <p>{data.main.humidity} %</p>
-            <p>{data.main.pressure / 1000} BAR</p>
-            <p>{data.wind.speed} km/h</p>
+            <p>{dataTest.main.humidity} %</p>
+            <p>{dataTest.main.pressure / 1000} BAR</p>
+            <p>{dataTest.wind.speed} km/h</p>
           </div>
         </div>
       ) : null}
