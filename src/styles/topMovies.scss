@@ -1,0 +1,50 @@
+.movies-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #49aaee;
+  .movies-article {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    h3 {
+      height: 50px;
+    }
+    .poster {
+      align-self: center;
+      height: 420px;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .movies-header {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.6rem;
+  }
+  .rank {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+    svg {
+      width: 15px;
+    }
+  }
+}
+
+#up {
+  fill: green;
+}
+
+#down {
+  fill: red;
+}
+
+#equal {
+  fill: yellow;
+}
