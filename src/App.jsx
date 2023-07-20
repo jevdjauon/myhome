@@ -6,6 +6,7 @@ import BackgroundImage from "./components/BackgroundImage";
 import WeatherToolbar from "./components/WeatherWidget";
 import TimeWidget from "./components/TimeWidget";
 import Interests from "./components/Interests";
+import SearchWidget from "./components/SearchWidget";
 
 // Other
 import "./styles/app.scss";
@@ -24,7 +25,8 @@ const App = () => {
           <p>user bar</p>
           <p>setting</p>
         </header>
-        <div>searhbar?</div>
+
+        <SearchWidget />
         <FavoriteLinks />
         <Interests />
       </div>
