@@ -15,48 +15,57 @@ const FavoriteLinks = () => {
     addLinks ? setAddLinks(false) : setAddLinks(true);
   };
 
-  const setLocalStorage = () => {
-    linksData
-      ? localStorage.setItem("links-data", JSON.stringify(linksData))
-      : localStorage.setItem("links-data", JSON.stringify(favoriteData));
-  };
+  // const setLocalStorage = () => {
+  //   linksData
+  //     ? localStorage.setItem("links-data", JSON.stringify(linksData))
+  //     : localStorage.setItem("links-data-test", JSON.stringify(favoriteData));
+  // };
 
-  const getLocalStorage = async () => {
-    const data = await JSON.parse(localStorage.getItem("links-data"));
-    setLinksData(data.favoriteLinks);
-  };
+  // const getLocalStorage = async () => {
+  //   const data = await JSON.parse(localStorage.getItem("links-data"));
+  //   setLinksData(data.favoriteLinks);
+  // };
 
   useEffect(() => {
-    localStorage.length === 0 ? null : getLocalStorage("links-data");
-
-    setLocalStorage();
-    linksData ? null : setLocalStorage();
+    // localStorage.length === 0 ? null : getLocalStorage("links-data");
+    // setLocalStorage();
+    // linksData ? null : setLocalStorage();
+    if (localStorage.favorite) {
+      setLinksData(JSON.parse(localStorage.favorite));
+    }
   }, []);
 
   const addNewFavorite = (e) => {
     e.preventDefault();
 
-    const count = linksData.length !== 0 ? linksData.length : 0;
+    // const count = linksData.length !== 0 ? linksData.length : 0;
+    // console.log(count);
+    // linksData[count] = {
+    //   title: newTitle,
+    //   url: newUrl,
+    // };
 
-    linksData[count] = {
+    const newLinksData = {
       title: newTitle,
       url: newUrl,
     };
-    setLinksData(linksData);
-    localStorage.removeItem("links-data"),
-      localStorage.setItem("links-data", JSON.stringify(linksData));
-    console.log(localStorage);
+    setLinksData(newLinksData);
+    localStorage.setItem("favorite", linksData);
+
     setAddLinks(false);
   };
 
-  console.log(linksData);
-
+  console.log("state", linksData);
+  console.log("state length", typeof linksData);
   return (
     <div className="favorite-links">
-      {linksData &&
+      {linksData && <LinkItem url={linksData.url} title={linksData.title} />}
+
+      {/* {linksData &&
         linksData.map((item) => (
           <LinkItem key={item.url} url={item.url} title={item.title} />
-        ))}
+        )
+        )} */}
       <button className="add-item" onClick={toggleAddLinks}>
         <img
           src="https://www.iconbolt.com/iconsets/akar-icons/plus.svg"
