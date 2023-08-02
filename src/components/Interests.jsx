@@ -9,6 +9,7 @@ import FormulaSeason from "../pages/FormulaSeason";
 import News from "../pages/News";
 import ProgrammingMemes from "../pages/ProgrammingMemes";
 import TodayInHistory from "../pages/TodayInHistory";
+import LiveScores from "../pages/LiveScores";
 
 // Others
 import Hamburger from "./Hamburger";
@@ -21,9 +22,16 @@ const Interests = () => {
   const [interestsMenu, setInterestsMenu] = useState(false);
   const [memesShown, setMemesShown] = useState(false);
   const [todayHistory, setTodayHistory] = useState(false);
+  const [liveScore, setLiveScore] = useState(false);
+  const [newsAcc, setNewsAcc] = useState(false);
+  const [entertainmentAcc, setentertainmentAcc] = useState(false);
+  const [sportsAcc, setSportsAcc] = useState(false);
 
   const menuOpen = () => {
     interestsMenu ? setInterestsMenu(false) : setInterestsMenu(true);
+    newsAcc ? setNewsAcc(false) : null;
+    entertainmentAcc ? setentertainmentAcc(false) : null;
+    sportsAcc ? setSportsAcc(false) : null;
   };
 
   const showCryptoNews = () => {
@@ -46,6 +54,26 @@ const Interests = () => {
     todayHistory ? setTodayHistory(false) : setTodayHistory(true);
   };
 
+  const showLiveScore = () => {
+    liveScore ? setLiveScore(false) : setLiveScore(true);
+  };
+
+  // const togglePage = (targetState, targetSet) => {
+  //   targetState ? targetSet(false) : targetSet(true);
+  // };
+
+  const showNewsMenu = () => {
+    newsAcc ? setNewsAcc(false) : setNewsAcc(true);
+  };
+
+  const showEntertainmentMenu = () => {
+    entertainmentAcc ? setentertainmentAcc(false) : setentertainmentAcc(true);
+  };
+
+  const showSportsMenu = () => {
+    sportsAcc ? setSportsAcc(false) : setSportsAcc(true);
+  };
+
   return (
     <div className="interests-container">
       <div className="interests-navbar" style={{ position: "sticky" }}>
@@ -59,16 +87,33 @@ const Interests = () => {
         {todayHistory ? (
           <Link to="today-in-history">Today In History</Link>
         ) : null}
+        {liveScore ? <Link to="live-scores">Live Scores</Link> : null}
 
         {interestsMenu ? (
           <div className="customize">
             <h4>What You Want To See?</h4>
             <div className="customize-buttons">
-              <button onClick={showCryptoNews}>Crypto News</button>
-              <button onClick={showTopMovies}>Top Movies IMDB</button>
-              <button onClick={showF1}>F1</button>
-              <button onClick={showMemes}>Programming Memes</button>
-              <button onClick={showTodayInHistory}>Today In History</button>
+              <button className="accordion" onClick={showNewsMenu}>
+                News
+              </button>
+              <div className={newsAcc ? "active" : "hidden"}>
+                <button onClick={showCryptoNews}>Crypto News</button>
+              </div>
+              <button className="accordion" onClick={showEntertainmentMenu}>
+                Entertainment
+              </button>
+              <div className={entertainmentAcc ? "active" : "hidden"}>
+                <button onClick={showTopMovies}>Top Movies IMDB</button>
+                <button onClick={showMemes}>Programming Memes</button>
+                <button onClick={showTodayInHistory}>Today In History</button>
+              </div>
+              <button className="accordion" onClick={showSportsMenu}>
+                Sports
+              </button>
+              <div className={sportsAcc ? "active" : "hidden"}>
+                <button onClick={showF1}>F1</button>
+                <button onClick={showLiveScore}>Live Scores</button>
+              </div>
             </div>
           </div>
         ) : null}
@@ -84,6 +129,7 @@ const Interests = () => {
         <Route path="formula-season" element={<FormulaSeason />} />
         <Route path="programming-memes" element={<ProgrammingMemes />} />
         <Route path="today-in-history" element={<TodayInHistory />} />
+        <Route path="live-scores" element={<LiveScores />} />
       </Routes>
     </div>
   );
