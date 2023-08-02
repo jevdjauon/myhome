@@ -1,0 +1,47 @@
+.live-scores-page {
+  padding: 1rem;
+  .live-scores-container {
+    .stages-container {
+      display: flex;
+      justify-content: flex-start;
+      flex-flow: row wrap;
+      margin: 0 auto;
+      width: 80%;
+      margin-bottom: 5rem;
+      .event-container {
+        background-color: gray;
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        width: 400px;
+        h5 {
+          width: 80px;
+          text-align: center;
+        }
+        .event-item {
+          width: inherit;
+          .team-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 2rem;
+            .team-info {
+              display: flex;
+              align-items: center;
+              img {
+                width: 30px;
+                margin-right: 1rem;
+              }
+              p {
+                span {
+                  padding: 0 0.2rem;
+                  font-size: 0.65rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
