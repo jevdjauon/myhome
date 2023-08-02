@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { liveScoreFetchData } from "../helpers/liveScoresFetchData";
-import liveScoresTestData from "../data/liveScoresTestData.json";
 import "../styles/liveScores.scss";
 
 const LiveScores = () => {
