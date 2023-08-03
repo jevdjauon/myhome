@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { moviesFetchData } from "../helpers/moviesFetchData";
 import { ReactComponent as ArrowUp } from "../assets/upvote.svg";
@@ -34,7 +33,6 @@ const TopMovies = () => {
     }
   };
 
-  console.log(rankDirection);
   return (
     <div>
       <h1>Top rated movies of the week</h1>
@@ -64,7 +62,11 @@ const TopMovies = () => {
                   {"-"}
                   <p>{titleCertificate.rating}</p>
                   {"-"}
-                  <p>{titleRuntime.seconds / 60} min</p>
+                  {titleRuntime ? (
+                    <p>{titleRuntime.seconds / 60} min</p>
+                  ) : (
+                    <p>NA</p>
+                  )}
                 </div>
 
                 <img
@@ -87,7 +89,6 @@ const TopMovies = () => {
                   )}
                   <p>from: {chartMeterRanking.rankChange.difference}</p>
                 </div>
-                {/* <Link to={url}>More On IMDB</Link> */}
               </div>
             )
           )}
