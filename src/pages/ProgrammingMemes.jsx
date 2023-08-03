@@ -12,9 +12,8 @@ const ProgrammingMemes = () => {
 
   return (
     <div className="memes-container">
-      {data.map((item) => (
-        <img src={item.image} alt="" />
-      ))}
+      {data &&
+        data.map((item, index) => <img src={item.image} alt="" key={index} />)}
     </div>
   );
 };
