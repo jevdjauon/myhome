@@ -15,22 +15,8 @@ const FavoriteLinks = () => {
     addLinks ? setAddLinks(false) : setAddLinks(true);
   };
 
-  // const setLocalStorage = () => {
-  //   linksData
-  //     ? localStorage.setItem("links-data", JSON.stringify(linksData))
-  //     : localStorage.setItem("links-data-test", JSON.stringify(favoriteData));
-  // };
-
-  // const getLocalStorage = async () => {
-  //   const data = await JSON.parse(localStorage.getItem("links-data"));
-  //   setLinksData(data.favoriteLinks);
-  // };
-
   useEffect(() => {
-    // localStorage.length === 0 ? null : getLocalStorage("links-data");
-    // setLocalStorage();
-    // linksData ? null : setLocalStorage();
-    if (localStorage.favorite) {
+    if (localStorage.getItem("favorite")) {
       setLinksData(JSON.parse(localStorage.favorite));
     }
   }, []);
@@ -38,34 +24,32 @@ const FavoriteLinks = () => {
   const addNewFavorite = (e) => {
     e.preventDefault();
 
-    // const count = linksData.length !== 0 ? linksData.length : 0;
-    // console.log(count);
-    // linksData[count] = {
-    //   title: newTitle,
-    //   url: newUrl,
-    // };
-
-    const newLinksData = {
+    const data = localStorage.getItem("favorite");
+    const newFavoriteData = {
       title: newTitle,
       url: newUrl,
     };
-    setLinksData(newLinksData);
-    localStorage.setItem("favorite", linksData);
 
+    if (localStorage.getItem("favorite")) {
+      localStorage.setItem(
+        "favorite",
+        `${data.replace("]", "")},${JSON.stringify(newFavoriteData)}]`
+      );
+    } else {
+      localStorage.setItem("favorite", `[${JSON.stringify(newFavoriteData)}]`);
+    }
+
+    setLinksData(localStorage.getItem("favorite"));
     setAddLinks(false);
   };
 
-  console.log("state", linksData);
-  console.log("state length", typeof linksData);
   return (
     <div className="favorite-links">
-      {linksData && <LinkItem url={linksData.url} title={linksData.title} />}
+      {linksData &&
+        linksData.map((item, index) => (
+          <LinkItem key={index} title={item.title} url={item.url} />
+        ))}
 
-      {/* {linksData &&
-        linksData.map((item) => (
-          <LinkItem key={item.url} url={item.url} title={item.title} />
-        )
-        )} */}
       <button className="add-item" onClick={toggleAddLinks}>
         <img
           src="https://www.iconbolt.com/iconsets/akar-icons/plus.svg"
@@ -76,22 +60,25 @@ const FavoriteLinks = () => {
       {addLinks ? (
         <div style={{ backgroundColor: "cyan" }}>
           <p>Add Favorite</p>
-          <p>Add Page Title</p>
-          <input
-            type="text"
-            name="title"
-            id="title"
-            value={newTitle}
-            onChange={(e) => setNewTitle(e.target.value)}
-          />
-          <p>Past Page Url</p>
-          <input
-            type="url"
-            name="url"
-            id="url"
-            value={newUrl}
-            onChange={(e) => setNewUrl(e.target.value)}
-          />
+          <form action="">
+            <p>Add Page Title</p>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              value={newTitle}
+              onChange={(e) => setNewTitle(e.target.value)}
+            />
+            <p>Past Page Url</p>
+            <input
+              type="url"
+              name="url"
+              id="url"
+              value={newUrl}
+              onChange={(e) => setNewUrl(e.target.value)}
+            />
+          </form>
+
           <button onClick={addNewFavorite}>Add Favorite</button>
         </div>
       ) : null}
