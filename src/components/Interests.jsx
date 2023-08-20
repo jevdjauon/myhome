@@ -1,5 +1,5 @@
 // Apps
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, Routes, Route } from "react-router-dom";
 
 // Pages
@@ -36,31 +36,48 @@ const Interests = () => {
 
   const showCryptoNews = () => {
     cryptoShown ? setCryptoShown(false) : setCryptoShown(true);
+    if (localStorage.getItem("cryptoNews")) {
+      localStorage.removeItem("cryptoNews");
+    } else localStorage.setItem("cryptoNews", "shown");
   };
 
   const showTopMovies = () => {
     moviesShown ? setMoviesShown(false) : setMoviesShown(true);
+    if (localStorage.getItem("movies")) {
+      localStorage.removeItem("movies");
+    } else localStorage.setItem("movies", "shown");
   };
 
   const showF1 = () => {
     f1Shown ? setf1Shown(false) : setf1Shown(true);
+    if (localStorage.getItem("f1")) {
+      localStorage.removeItem("f1");
+    } else localStorage.setItem("f1", "shown");
   };
 
   const showMemes = () => {
     memesShown ? setMemesShown(false) : setMemesShown(true);
+
+    if (localStorage.getItem("memes")) {
+      localStorage.removeItem("memes");
+    } else localStorage.setItem("memes", "shown");
   };
 
   const showTodayInHistory = () => {
     todayHistory ? setTodayHistory(false) : setTodayHistory(true);
+
+    if (localStorage.getItem("todayInHistory")) {
+      localStorage.removeItem("todayInHistory");
+    } else localStorage.setItem("todayInHistory", "shown");
   };
 
   const showLiveScore = () => {
     liveScore ? setLiveScore(false) : setLiveScore(true);
-  };
 
-  // const togglePage = (targetState, targetSet) => {
-  //   targetState ? targetSet(false) : targetSet(true);
-  // };
+    if (localStorage.getItem("liveScore")) {
+      localStorage.removeItem("liveScore");
+    } else localStorage.setItem("liveScore", "shown");
+  };
 
   const showNewsMenu = () => {
     newsAcc ? setNewsAcc(false) : setNewsAcc(true);
@@ -73,6 +90,15 @@ const Interests = () => {
   const showSportsMenu = () => {
     sportsAcc ? setSportsAcc(false) : setSportsAcc(true);
   };
+
+  useEffect(() => {
+    localStorage.getItem("cryptoNews") ? setCryptoShown(true) : null;
+    localStorage.getItem("movies") ? setMoviesShown(true) : null;
+    localStorage.getItem("f1") ? setf1Shown(true) : null;
+    localStorage.getItem("memes") ? setMemesShown(true) : null;
+    localStorage.getItem("todayInHistory") ? setTodayHistory(true) : null;
+    localStorage.getItem("liveScore") ? setLiveScore(true) : null;
+  }, []);
 
   return (
     <div className="interests-container">
