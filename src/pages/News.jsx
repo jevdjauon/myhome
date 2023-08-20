@@ -7,15 +7,15 @@ import { useQuery } from "@tanstack/react-query";
 import "../styles/news.scss";
 
 const News = () => {
-  const { isLoading, error, data } = useQuery({
-    queryKey: ["newsData"],
-    queryFn: newsFetchData,
-    cacheTime: 60 * (60 * 1000),
-  });
+  // const { isLoading, error, data } = useQuery({
+  //   queryKey: ["newsData"],
+  //   queryFn: newsFetchData,
+  //   cacheTime: 60 * (60 * 1000),
+  // });
 
   return (
     <div className="news">
-      {data &&
+      {/* {data &&
         data.results.map(
           ({ title, description, image_url, creator, content, link }) => {
             let smallContent = content.slice(0, 500);
@@ -36,7 +36,7 @@ const News = () => {
               </div>
             );
           }
-        )}
+        )} */}
     </div>
   );
 };
