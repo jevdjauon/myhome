@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import formulaData from "../data/formulaTestData.json";
 import { formulaFetchData } from "../helpers/formulaFetchData";
+import Loader from "../components/Loader";
 
 const FormulaSeason = () => {
   const nextRace = formulaData.nextRoundEvents;
@@ -12,9 +13,13 @@ const FormulaSeason = () => {
     cacheTime: 60 * (60 * 1000),
   });
 
+  if (isLoading) return <Loader />;
+  if (error) return "An error has occurred: " + error.message;
+
   return (
     <div>
       <h3>Next Sesion</h3>
+      {isLoading && <Loader />}
       {data &&
         data.nextRoundEvents.map(({ startDate, summary, location, status }) => (
           <div key={startDate} style={{ margin: "20px" }}>

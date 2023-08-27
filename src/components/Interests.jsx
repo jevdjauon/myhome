@@ -1,6 +1,6 @@
 // Apps
 import { useState, useEffect } from "react";
-import { Link, Routes, Route } from "react-router-dom";
+import { NavLink, Routes, Route } from "react-router-dom";
 
 // Pages
 import CryptoNews from "../pages/CryptoNews";
@@ -103,17 +103,19 @@ const Interests = () => {
   return (
     <div className="interests-container">
       <div className="interests-navbar" style={{ position: "sticky" }}>
-        <Link to="/">News</Link>
-        {cryptoShown ? <Link to="crypto-news">Crypto News</Link> : null}
-        {moviesShown ? <Link to="top-movies">Top Movies</Link> : null}
-        {f1Shown ? <Link to="formula-season">Formula 1</Link> : null}
-        {memesShown ? (
-          <Link to="programming-memes">Programming Memes</Link>
-        ) : null}
-        {todayHistory ? (
-          <Link to="today-in-history">Today In History</Link>
-        ) : null}
-        {liveScore ? <Link to="live-scores">Live Scores</Link> : null}
+        <nav>
+          <NavLink to="/">News</NavLink>
+          {cryptoShown ? <NavLink to="crypto-news">Crypto News</NavLink> : null}
+          {moviesShown ? <NavLink to="top-movies">Top Movies</NavLink> : null}
+          {f1Shown ? <NavLink to="formula-season">Formula 1</NavLink> : null}
+          {memesShown ? (
+            <NavLink to="programming-memes">Programming Memes</NavLink>
+          ) : null}
+          {todayHistory ? (
+            <NavLink to="today-in-history">Today In History</NavLink>
+          ) : null}
+          {liveScore ? <NavLink to="live-scores">Live Scores</NavLink> : null}
+        </nav>
 
         {interestsMenu ? (
           <div className="customize">
@@ -143,20 +145,25 @@ const Interests = () => {
             </div>
           </div>
         ) : null}
-        <Hamburger
-          styleName={interestsMenu ? "opened interestsMenu" : "interestsMenu"}
-          clickFunction={menuOpen}
-        />
+        <div className="menu">
+          <p>Customize</p>
+          <Hamburger
+            styleName={interestsMenu ? "opened interestsMenu" : "interestsMenu"}
+            clickFunction={menuOpen}
+          />
+        </div>
       </div>
-      <Routes>
-        <Route path="/" default element={<News />} />
-        <Route path="crypto-news" default element={<CryptoNews />} />
-        <Route path="top-movies" element={<TopMovies />} />
-        <Route path="formula-season" element={<FormulaSeason />} />
-        <Route path="programming-memes" element={<ProgrammingMemes />} />
-        <Route path="today-in-history" element={<TodayInHistory />} />
-        <Route path="live-scores" element={<LiveScores />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" default element={<News />} />
+          <Route path="crypto-news" default element={<CryptoNews />} />
+          <Route path="top-movies" element={<TopMovies />} />
+          <Route path="formula-season" element={<FormulaSeason />} />
+          <Route path="programming-memes" element={<ProgrammingMemes />} />
+          <Route path="today-in-history" element={<TodayInHistory />} />
+          <Route path="live-scores" element={<LiveScores />} />
+        </Routes>
+      </main>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // Components
 import BackgroundImage from "./components/BackgroundImage";
 import WeatherToolbar from "./components/WeatherWidget";
-import TimeWidget from "./components/TimeWidget";
+
 import Interests from "./components/Interests";
 import SearchWidget from "./components/SearchWidget";
 
@@ -20,7 +20,6 @@ const App = () => {
       <div className="app-container">
         <BackgroundImage />
         <header>
-          <TimeWidget />
           <WeatherToolbar />
           <p>user bar</p>
           <p>setting</p>

@@ -4,6 +4,7 @@ import { moviesFetchData } from "../helpers/moviesFetchData";
 import { ReactComponent as ArrowUp } from "../assets/upvote.svg";
 import { ReactComponent as DownUp } from "../assets/downvote.svg";
 import { ReactComponent as Equal } from "../assets/equal.svg";
+import Loader from "../components/Loader";
 
 import "../styles/topMovies.scss";
 
@@ -16,6 +17,9 @@ const TopMovies = () => {
     staleTime: 60 * (60 * 1000),
     cacheTime: 60 * (60 * 1000),
   });
+
+  if (isLoading) return <Loader />;
+  if (error) return "An error has occurred: " + error.message;
 
   const getRankDirection = () => {
     if (

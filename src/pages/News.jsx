@@ -5,38 +5,30 @@ import { useQuery } from "@tanstack/react-query";
 
 // Other
 import "../styles/news.scss";
+import Loader from "../components/Loader";
 
 const News = () => {
-  // const { isLoading, error, data } = useQuery({
-  //   queryKey: ["newsData"],
-  //   queryFn: newsFetchData,
-  //   cacheTime: 60 * (60 * 1000),
-  // });
-
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["newsData"],
+    queryFn: newsFetchData,
+    cacheTime: 60 * (60 * 1000),
+  });
+  if (isLoading) return <Loader />;
+  if (error) return "An error has occurred: " + error.message;
   return (
     <div className="news">
-      {/* {data &&
-        data.results.map(
-          ({ title, description, image_url, creator, content, link }) => {
-            let smallContent = content.slice(0, 500);
-            return (
-              <div className="news-article" key={link}>
-                <h3>{title}</h3>
-                <p>{description}</p>
-                <img src={image_url} alt="" />
-                <p>{creator}</p>
-                <Link to={link} target="_blank">
-                  Reed More
-                </Link>
-                <p className="article-content">
-                  {smallContent}
-                  <span>...</span>
-                </p>
-                <button>Reed More</button>
-              </div>
-            );
-          }
-        )} */}
+      {data &&
+        data.news.map(({ date, body, image, source, title, url }) => (
+          <div className="article">
+            <img src={image} alt="" />
+            <div className="content">
+              <p>{source}</p>
+              <h1>{title}</h1>
+              <p>{body}</p>
+            </div>
+            <p>{date}</p>
+          </div>
+        ))}
     </div>
   );
 };

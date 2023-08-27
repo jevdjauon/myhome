@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { liveScoreFetchData } from "../helpers/liveScoresFetchData";
+import Loader from "../components/Loader";
 import "../styles/liveScores.scss";
 
 const LiveScores = () => {
@@ -8,7 +9,7 @@ const LiveScores = () => {
     queryFn: liveScoreFetchData,
   });
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return <Loader />;
   if (error) return "An error has occurred: " + error.message;
 
   const liveData = data.Stages;
@@ -16,6 +17,7 @@ const LiveScores = () => {
   return (
     <div className="live-scores-page">
       <h3>Live Scores</h3>
+      {/* {isLoading && <Loader />} */}
       {liveData.map(({ Cnm, CompD, Snm, Events }) => (
         <div className="live-scores-container">
           <h4>

@@ -1,6 +1,7 @@
 // Components
 import CryptoArticle from "../components/CryptoArticle.jsx";
 import { useQuery } from "@tanstack/react-query";
+import Loader from "../components/Loader.jsx";
 
 // Others
 import testData from "../data/interestsTestData.json";
@@ -11,7 +12,7 @@ const CryptoNews = () => {
     queryKey: ["interests-data"],
     queryFn: cryptoFetchData,
   });
-  if (isLoading) return "Loading...";
+  if (isLoading) return <Loader />;
   if (error) return "An error has occurred: " + error.message;
 
   return (

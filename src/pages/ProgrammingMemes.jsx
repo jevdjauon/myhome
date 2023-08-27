@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { memeFetchData } from "../helpers/memeFetchData";
+import Loader from "../components/Loader";
 import "../styles/memes.scss";
 
 const ProgrammingMemes = () => {
@@ -7,7 +8,7 @@ const ProgrammingMemes = () => {
     queryKey: ["programming-memes"],
     queryFn: memeFetchData,
   });
-  if (isLoading) return "Loading...";
+  if (isLoading) return <Loader />;
   if (error) return "An error has occurred: " + error.message;
 
   return (
