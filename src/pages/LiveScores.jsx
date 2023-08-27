@@ -17,7 +17,7 @@ const LiveScores = () => {
   return (
     <div className="live-scores-page">
       <h3>Live Scores</h3>
-      {/* {isLoading && <Loader />} */}
+
       {liveData.map(({ Cnm, CompD, Snm, Events }) => (
         <div className="live-scores-container">
           <h4>

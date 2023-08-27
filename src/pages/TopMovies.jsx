@@ -38,8 +38,7 @@ const TopMovies = () => {
   };
 
   return (
-    <div>
-      <h1>Top rated movies of the week</h1>
+    <div className="top-movies">
       <div className="movies-container">
         {data &&
           data.data.map(

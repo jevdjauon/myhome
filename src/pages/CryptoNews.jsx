@@ -6,6 +6,7 @@ import Loader from "../components/Loader.jsx";
 // Others
 import testData from "../data/interestsTestData.json";
 import { cryptoFetchData } from "../helpers/cryptoFetchData.js";
+import "../styles/cryptoNews.scss";
 
 const CryptoNews = () => {
   const { isLoading, error, data } = useQuery({
@@ -14,11 +15,11 @@ const CryptoNews = () => {
   });
   if (isLoading) return <Loader />;
   if (error) return "An error has occurred: " + error.message;
-
+  console.log(data && data);
   return (
-    <div>
-      {testData &&
-        testData.map(({ title, url, description, date }) => (
+    <div className="crypto-container">
+      {data &&
+        data.map(({ title, url, description, date }) => (
           <div key={title}>
             <CryptoArticle
               title={title}

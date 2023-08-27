@@ -1,5 +1,6 @@
 .live-scores-page {
   padding: 1rem;
+  background-color: #f7f7f7;
   .live-scores-container {
     .stages-container {
       display: flex;
@@ -9,11 +10,13 @@
       width: 80%;
       margin-bottom: 5rem;
       .event-container {
-        background-color: gray;
+        background-color: white;
         margin: 10px;
         display: flex;
         align-items: center;
         width: 400px;
+        outline: 1px solid rgba(0, 0, 0, 0.0578);
+        box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px;
         h5 {
           width: 80px;
           text-align: center;

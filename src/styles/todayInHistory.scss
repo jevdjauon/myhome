@@ -1,0 +1,15 @@
+.today {
+  background-color: #f7f7f7;
+  padding: 2rem;
+  .today-article {
+    background-color: white;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    outline: 1px solid rgba(0, 0, 0, 0.0578);
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px;
+  }
+}

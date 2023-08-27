@@ -1,0 +1,22 @@
+.formula-container {
+  background-color: #f7f7f7;
+  padding: 2rem;
+  .formula-event {
+    background-color: white;
+    height: 200px;
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    outline: 1px solid rgba(0, 0, 0, 0.0578);
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px;
+    h3 {
+      margin-bottom: 1rem;
+    }
+  }
+  .race-location {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    height: 3rem;
+  }
+}

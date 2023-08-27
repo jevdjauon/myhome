@@ -25,7 +25,7 @@ const App = () => {
           <p>setting</p>
         </header>
 
-        <SearchWidget />
+        {/* <SearchWidget /> */}
         <FavoriteLinks />
         <Interests />
       </div>

@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
-
 import LinkItem from "./LinkItem";
-
 import "../styles/favoriteLinks.scss";
-import favoriteData from "../data/favoriteLinksTestData.json";
 
 const FavoriteLinks = () => {
   const [addLinks, setAddLinks] = useState(false);

@@ -1,6 +1,6 @@
 .loader {
-  width: 100%;
-  margin: 0 auto;
+  display: grid;
+  place-items: center;
 }
 
 .lds-ellipsis {
