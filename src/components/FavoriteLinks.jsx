@@ -55,8 +55,8 @@ const FavoriteLinks = () => {
         <p>Add Favorite</p>
       </button>
       {addLinks ? (
-        <div style={{ backgroundColor: "cyan" }}>
-          <p>Add Favorite</p>
+        <div className="add-links-menu">
+          <h3>Add Favorite</h3>
           <form action="">
             <p>Add Page Title</p>
             <input
@@ -67,6 +67,7 @@ const FavoriteLinks = () => {
               onChange={(e) => setNewTitle(e.target.value)}
             />
             <p>Past Page Url</p>
+
             <input
               type="url"
               name="url"

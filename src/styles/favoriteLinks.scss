@@ -66,3 +66,34 @@
     background-color: white;
   }
 }
+
+.add-links-menu {
+  background-color: #f7f7f7;
+  width: 250px;
+  height: 200px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  p {
+    font-size: 0.8rem;
+  }
+  form {
+    outline: 1px solid rgba(0, 0, 0, 0.0578);
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px;
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
+    input {
+      width: 100%;
+    }
+  }
+  button {
+    margin-top: 0.5rem;
+  }
+}
