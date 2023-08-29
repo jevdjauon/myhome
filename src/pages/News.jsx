@@ -6,20 +6,21 @@ import { useQuery } from "@tanstack/react-query";
 // Other
 import "../styles/news.scss";
 import Loader from "../components/Loader";
+import newsTestData from "../data/newsTestData.json";
 
 const News = () => {
   const { isLoading, error, data } = useQuery({
-    queryKey: ["newsData"],
+    queryKey: ["newsNowData"],
     queryFn: newsFetchData,
     cacheTime: 60 * (60 * 1000),
   });
   if (isLoading) return <Loader />;
-  if (error) return "An error has occurred: " + error.message;
+  // if (error) return "An error has occurred: " + error.message;
   return (
     <div className="news">
       {data &&
         data.news.map(({ date, body, image, source, title, url }) => (
-          <div className="article">
+          <div key={url} className="article">
             <img src={image} alt="" />
             <div className="content">
               <p>{source}</p>

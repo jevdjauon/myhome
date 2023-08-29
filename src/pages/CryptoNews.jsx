@@ -15,7 +15,7 @@ const CryptoNews = () => {
   });
   if (isLoading) return <Loader />;
   if (error) return "An error has occurred: " + error.message;
-  console.log(data && data);
+
   return (
     <div className="crypto-container">
       {data &&

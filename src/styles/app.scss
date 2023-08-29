@@ -9,10 +9,12 @@
 
 .app-container {
   width: 100%;
+  min-width: 1024px;
   header {
     z-index: 10;
     position: relative;
     height: 50px;
+    width: calc(100vw - 250px);
     color: white;
     display: flex;
     justify-content: space-between;

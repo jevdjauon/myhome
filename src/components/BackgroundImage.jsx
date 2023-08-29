@@ -1,65 +1,23 @@
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../styles/backgroundImage.scss";
 
 import { imageFetchData } from "../helpers/imageFetchData";
 import { useQuery } from "@tanstack/react-query";
-import { useState, useEffect } from "react";
-
-const selectOptions = [
-  {
-    label: "forest",
-    value: "forest",
-  },
-  {
-    label: "mountain",
-    value: "mountain",
-  },
-  {
-    label: "river",
-    value: "river",
-  },
-  {
-    label: "building",
-    value: "building",
-  },
-  {
-    label: "sea",
-    value: "sea",
-  },
-  {
-    label: "beach",
-    value: "beach",
-  },
-
-  {
-    label: "animals",
-    value: "animals",
-  },
-  {
-    label: "space",
-    value: "space",
-  },
-  {
-    label: "sports",
-    value: "sports",
-  },
-  {
-    label: "cars",
-    value: "cars",
-  },
-  {
-    label: "fashion",
-    value: "fashion",
-  },
-];
+import { useState } from "react";
+import Loader from "./Loader";
+import bgOptionsData from "../data/bgOptionsData.json";
 
 const BackgroundImage = () => {
+  const [menuOpened, setMenuOpened] = useState(false);
   const [backgroundOption, setBackgroundOption] = useState(
     localStorage.getItem("backgroundOption")
       ? localStorage.backgroundOption
-      : selectOptions[0].value
+      : bgOptionsData[0].value
   );
+
+  const openMenu = () => {
+    menuOpened ? setMenuOpened(false) : setMenuOpened(true);
+  };
 
   const setSelectedOption = (event) => {
     const option = selectOptions.find(
@@ -76,8 +34,9 @@ const BackgroundImage = () => {
     cacheTime: 120 * (60 * 1000),
   });
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return <Loader />;
   if (error) return error.message;
+
   let imgNmb = parseInt(Math.random() * 10);
   let bgImageUrl = data.photos[imgNmb].src.landscape;
 
@@ -94,19 +53,36 @@ const BackgroundImage = () => {
           backgroundImage: `url(${bgImageUrl})`,
         }}
       ></div>
-      <div>
-        <form action="" className="bg-options">
-          <select onChange={setSelectedOption}>
-            {selectOptions.map((option, index) => (
-              <option key={index} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-          <button onClick={changeBackground}>Get state</button>
-        </form>
-        <Link to="https://www.pexels.com">Photos provided by Pexels</Link>
+      <div className="main-menu">
+        <button onClick={openMenu}>
+          <img
+            src="https://www.iconbolt.com/iconsets/charm-icons/menu-kebab.svg"
+            alt=""
+          />
+        </button>
       </div>
+      {menuOpened ? (
+        <div className="menu-container">
+          <div className="bg-options">
+            <p>Select Background Theme</p>
+            <form action="">
+              <select onChange={setSelectedOption}>
+                {bgOptionsData.map((option, index) => (
+                  <option key={index} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+              <button onClick={changeBackground}>Chose</button>
+            </form>
+          </div>
+          <div className="bg-credits">
+            <NavLink to="https://www.pexels.com" target="_blank">
+              Background provided by Pexels
+            </NavLink>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };

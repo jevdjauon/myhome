@@ -1,10 +1,9 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import dataTest from "../data/weatherTestData.json";
 import "../styles/weatherToolbar.scss";
 import { useQuery } from "@tanstack/react-query";
 import { weatherFetchData } from "../helpers/weatherFetchData";
-import capitalsData from "../data/capitalsData.json";
+import Loader from "./Loader";
 
 const WeatherToolbar = () => {
   const [dropdown, setDropdown] = useState(false);
@@ -17,6 +16,10 @@ const WeatherToolbar = () => {
     queryFn: () => weatherFetchData(location),
   });
 
+  if (isLoading) return <Loader />;
+  if (error) return "An error has occurred: " + error.message;
+
+  // console.log(data && data);
   const getWeatherIcon = async () => {
     setWeatherIcon(
       `https://openweathermap.org/img/w/${data.weather[0].icon}.png`
@@ -31,14 +34,14 @@ const WeatherToolbar = () => {
     if (data) {
       getWeatherIcon();
       getTemperature();
-    } else {
-      null;
     }
-  }, [data]);
+  }, []);
 
+  // weatherToolbar dropdown
   const dropdownOpen = () => {
     dropdown ? setDropdown(false) : setDropdown(true);
   };
+  // console.log(data);
 
   return (
     <div>
@@ -46,31 +49,55 @@ const WeatherToolbar = () => {
         <button onClick={() => dropdownOpen()} className="weather-container">
           <p>{data.name}</p>
           <img src={weatherIcon} alt="" />
-          <h4>{temperature}&#x2103;</h4>
+          <p>{temperature}&#x2103;</p>
         </button>
       )}
 
+      {/* <button onClick={() => dropdownOpen()} className="weather-container">
+        <p>{dataTest.name}</p>
+        <img
+          src={`https://openweathermap.org/img/w/${dataTest.weather[0].icon}.png`}
+          alt=""
+        />
+        <p>{parseInt((dataTest.main.temp - 32) * (5 / 9))}&#x2103;</p>
+      </button> */}
+
       {data && dropdown ? (
         <div className="weather-dropdown">
-          <h3>{data.name}</h3>
-
-          <div className="top">
-            <img src={weatherIcon} alt="" />
+          <div>
+            <p>{data.name}</p>
             <p>{temperature}&#x2103;</p>
           </div>
-          <div className="bottom">
-            <p>
-              Humidity: <span>{data.main.humidity} %</span>
-            </p>
-            <p>
-              Air Presure: <span>{dataTest.main.pressure / 1000} BAR</span>
-            </p>
-            <p>
-              Wind Speed: <span>{data.wind.speed} km/h</span>
-            </p>
+          <div>
+            <img src={weatherIcon} alt="" />
+          </div>
+          <div>
+            <p>{data.main.humidity} %</p>
+            <p>{dataTest.main.pressure / 1000} BAR</p>
+            <p>{data.wind.speed} km/h</p>
           </div>
         </div>
       ) : null}
+
+      {/* {dropdown ? (
+        <div className="weather-dropdown">
+          <div>
+            <p>{dataTest.name}</p>
+            <p>{parseInt((dataTest.main.temp - 32) * (5 / 9))}&#x2103;</p>
+          </div>
+          <div>
+            <img
+              src={`https://openweathermap.org/img/w/${dataTest.weather[0].icon}.png`}
+              alt=""
+            />
+          </div>
+          <div>
+            <p>{dataTest.main.humidity} %</p>
+            <p>{dataTest.main.pressure / 1000} BAR</p>
+            <p>{dataTest.wind.speed} km/h</p>
+          </div>
+        </div>
+      ) : null} */}
     </div>
   );
 };

@@ -1,6 +1,5 @@
 .bg-container {
-  //   background-color: chocolate;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   position: fixed;
 
@@ -15,11 +14,84 @@
     z-index: 0;
   }
 
-  .bg-options {
-    background-color: white;
+  .main-menu {
     position: absolute;
-    top: 550px;
-    left: 0;
-    // z-index: 5;
+    top: 0;
+    right: 1rem;
+    width: 250px;
+    height: 50px;
+    padding-right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    button {
+      all: unset;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      border-radius: 20px;
+      background-color: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 20px;
+        height: 30px;
+      }
+    }
+  }
+  .menu-container {
+    color: black !important;
+    width: 250px;
+    height: 150px;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #f7f7f7;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .bg-options {
+      background-color: white;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      outline: 1px solid rgba(0, 0, 0, 0.0578);
+      box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px;
+      p {
+        font-size: 0.8rem;
+      }
+      form {
+        select {
+          font-size: 0.7rem;
+          border: 1px solid rgba(0, 0, 0, 0.578);
+          padding: 5.5px;
+          text-transform: uppercase;
+        }
+        button {
+          all: unset;
+          cursor: pointer;
+          margin-left: 1rem;
+          font-size: 0.7rem;
+          border: 1px solid rgba(0, 0, 0, 0.578);
+          padding: 6.5px;
+          text-transform: uppercase;
+          background-color: #f7f7f7;
+          border-radius: 15px;
+        }
+      }
+    }
+    .bg-credits {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      a {
+        text-align: center;
+        font-size: 10px;
+      }
+    }
   }
 }

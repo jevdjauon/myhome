@@ -1,0 +1,47 @@
+[
+  {
+    "label": "forest",
+    "value": "forest"
+  },
+  {
+    "label": "mountain",
+    "value": "mountain"
+  },
+  {
+    "label": "river",
+    "value": "river"
+  },
+  {
+    "label": "building",
+    "value": "building"
+  },
+  {
+    "label": "sea",
+    "value": "sea"
+  },
+  {
+    "label": "beach",
+    "value": "beach"
+  },
+
+  {
+    "label": "animals",
+    "value": "animals"
+  },
+  {
+    "label": "space",
+    "value": "space"
+  },
+  {
+    "label": "sports",
+    "value": "sports"
+  },
+  {
+    "label": "cars",
+    "value": "cars"
+  },
+  {
+    "label": "fashion",
+    "value": "fashion"
+  }
+]

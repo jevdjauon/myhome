@@ -3,7 +3,7 @@ import axios from "axios";
 export const searchWidgetData = async () => {
   const options = {
     method: "GET",
-    // url: "https://google-search72.p.rapidapi.com/search",
+    url: "https://google-search72.p.rapidapi.com/search",
     params: {
       q: "word cup",
       gl: "us",

@@ -63,7 +63,9 @@ const TopMovies = () => {
                 <div className="movies-header">
                   <p>{releaseDate.year}</p>
                   {"-"}
-                  <p>{titleCertificate.rating}</p>
+                  <p>
+                    {titleCertificate == null ? "N/A" : titleCertificate.rating}
+                  </p>
                   {"-"}
                   {titleRuntime ? (
                     <p>{titleRuntime.seconds / 60} min</p>
